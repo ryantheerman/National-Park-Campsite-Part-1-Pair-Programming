@@ -20,7 +20,7 @@ WHERE daily_fee < '100';
 -- select name and daily fee of the campgrounds where the campground is open all year long
 SELECT name, daily_fee
 FROM campground
-WHERE open_to_mm = '12';
+WHERE open_from_mm = '01' AND open_to_mm = '12';
 
 -- PARK TABLE
 -----------------------------------------------
@@ -41,9 +41,8 @@ FROM park
 WHERE location <> 'Ohio';
 
 -- select the total number of visitors for all parks
-SELECT MAX(visitors)
+SELECT SUM(visitors)
 FROM park;
-
 
 -- select the average number of visitors for all parks
 SELECT AVG(visitors)
@@ -80,7 +79,7 @@ WHERE name LIKE '%Reservation%';
 
 
 -- select the total number of reservations in the reservation table
-SELECT reservation_id
+SELECT COUNT(reservation_id)
 FROM reservation;
 
 -- select reservation id, site id, name of the reservations where site id is in the list 9, 20, 24, 45, 46
